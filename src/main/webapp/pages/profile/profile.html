@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Profile</title>
+    <link href="profile.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <header class="main-header">
+      <div>
+        <img
+          class="header-logo"
+          src="../../img/logo 5.3.png"
+          alt="Company Logo"
+        />
+      </div>
+      <nav class="main-navigations">
+        <a href="../income/income.html">income tracking</a>
+        <a href="../expenses/expenses.html">expense tracking</a>
+        <a href="../budget/budget.html">budget management </a>
+        <a href="../goals/goals.html">goal setting</a>
+        <a href="../reports/reports.html">financial reports</a>
+      </nav>
+    </header>
+
+    <div class="container">
+      <div class="profile-container">
+        <div class="profile-pic">
+          <img
+            id="profileImage"
+            src="../../img/profile-2.png"
+            alt="Profile Picture"
+          />
+          <div class="btn-container">
+            <button class="change-btn" onclick="changePicture()">
+              Change Picture
+            </button>
+            <button class="delete-btn" onclick="deletePicture()">
+              Delete Picture
+            </button>
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label for="profileName">Profile Name</label>
+          <input type="text" id="profileName" placeholder="Maneesha" />
+        </div>
+
+        <div class="input-group">
+          <label for="userName">Username</label>
+          <input type="text" id="userName" placeholder="@mani" disabled />
+        </div>
+
+        <div class="input-group">
+          <label for="aboutMe">About Me</label>
+          <textarea id="aboutMe" rows="4" cols="50">
+Available during financial planning hours—let's talk money, unless it's about music!
+          </textarea>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Function to simulate changing the profile picture
+      function changePicture() {
+        alert("Change picture clicked!");
+      }
+
+      // Function to delete or change the profile picture to another image
+      function deletePicture() {
+        // Directly assign the new image source; ensure the file extension is included
+        document.getElementById("profileImage").src = "../../img/profile-3.png";
+      }
+    </script>
+  </body>
+</html>

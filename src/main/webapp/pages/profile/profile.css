@@ -1,0 +1,255 @@
+body {
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
+  margin: 0 auto;
+  background: linear-gradient(
+    70deg,
+    rgba(153, 233, 242, 0.334),
+    #3bc9db,
+    #0c8599,
+    #99e9f2,
+    #0b7285
+  );
+}
+
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 15px;
+  position: sticky;
+  top: 0;
+  border-bottom: 3px solid #1864ab;
+  background-color: #fff;
+  box-shadow: 0 10px 20px #a5d8ff;
+}
+
+.main-navigations a:hover {
+  text-decoration: underline;
+  color: #364fc7;
+}
+
+.header-logo {
+  height: 60px;
+  width: 250px;
+}
+
+.main-navigations {
+  font-size: 18px;
+  display: flex;
+  gap: 30px;
+  text-transform: uppercase;
+}
+
+.main-navigations a {
+  text-decoration: none;
+  color: #1971c2;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.profile-container {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 400px;
+}
+
+.profile-pic {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.profile-pic img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.btn-container {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+button {
+  padding: 8px 12px;
+  margin: 5px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.change-btn {
+  background-color: #007bff;
+  color: white;
+}
+
+.delete-btn {
+  background-color: #dc3545;
+  color: white;
+}
+
+.input-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+input::placeholder {
+  color: #ced4da;
+}
+
+/* -----------------------------------------------------------------------------------------------
+----------------------- RESPONSIVE DESIGN   ------------------------------------------------------------------
+----------------------------------------------------------------------------------------------- */
+
+@media screen and (min-width: 1200px) {
+  .profile-container {
+    width: 450px;
+  }
+
+  .main-navigations {
+    font-size: 20px;
+    gap: 40px;
+  }
+
+  button {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 1199px) {
+  .profile-container {
+    width: 80%;
+  }
+
+  .main-navigations {
+    gap: 25px;
+    font-size: 18px;
+  }
+
+  button {
+    font-size: 17px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .main-header {
+    padding: 10px 20px;
+  }
+
+  .header-logo {
+    width: 200px;
+    height: 55px;
+  }
+
+  .main-navigations {
+    gap: 20px;
+    font-size: 16px;
+  }
+
+  .container {
+    height: auto;
+    padding: 30px;
+  }
+
+  .profile-container {
+    width: 85%;
+  }
+
+  .profile-pic img {
+    width: 90px;
+    height: 90px;
+  }
+
+  button {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .main-header {
+    flex-direction: column;
+    text-align: center;
+    padding: 10px;
+  }
+
+  .header-logo {
+    width: 180px;
+    height: 50px;
+  }
+
+  .main-navigations {
+    flex-direction: column;
+    gap: 15px;
+    font-size: 15px;
+  }
+
+  .container {
+    height: auto;
+    padding: 20px;
+    margin: 20px;
+  }
+
+  .profile-container {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .profile-pic img {
+    width: 80px;
+    height: 80px;
+  }
+
+  button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .profile-container {
+    width: 95%;
+    padding: 10px;
+  }
+
+  .main-navigations {
+    font-size: 14px;
+  }
+
+  .profile-pic img {
+    width: 70px;
+    height: 70px;
+  }
+
+  button {
+    width: 100%;
+    padding: 12px;
+    font-size: 15px;
+  }
+}

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Income</title>
+    <link href="income.css" type="text/css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="main-header">
+      <div>
+        <img class="header-logo" src="../../img/logo 5.3.png" />
+      </div>
+      <div>
+        <nav class="main-navigations">
+          <a href="../income/income.html">income tracking</a>
+          <a href="../expenses/expenses.html">expense tracking</a>
+          <a href="../budget/budget.html">budget management </a>
+          <a href="#">goal setting</a>
+          <a href="#">financial reports</a>
+        </nav>
+      </div>
+    </div>
+    <div class="container">
+      <div>
+        <h1>Income management</h1>
+        <form>
+          <lable
+            class="label-name"
+            for="Income Description"
+            name="Income Description"
+            >Income Description
+          </lable>
+
+          <input
+            type="text"
+            required
+            maxlength="50"
+            placeholder="maximum 50 characters only"
+          />
+
+          <lable class="label-name" for="amount" name="amount">Amount</lable>
+          <input type="number" placeholder="eg:20000" required />
+
+          <lable class="label-name" for="category" name="category"
+            >Category</lable
+          >
+
+          <select class="category" required>
+            <option value="select one">select one</option>
+            <option value="Salary/Wages">
+              Salary/Wages (Full-time, Part-time, Bonuses, Overtime)
+            </option>
+
+            <option value="Freelance Income ">
+              Freelance Income (Projects, Consulting, Side Gigs)
+            </option>
+
+            <option value="Business Income">
+              Business Income (Profits from a Business, Self-employment)
+            </option>
+            <option value="Investments">
+              Investments (Stocks, Dividends, Bonds)
+            </option>
+            <option value="Real Estate ">
+              Real Estate (Rental Income, Property Sales)
+            </option>
+            <option value="Other Sources">Other Sources</option>
+          </select>
+
+          <label class="label-name" for="incomeDate" name="incomeDate"
+            >Income Date</label
+          >
+          <input type="date" required />
+
+          <button>SAVE</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="summary-table">
+      <div>
+        <table>
+          <tr>
+            <th>Description</th>
+            <th>Amount</th>
+            <th>Category</th>
+            <th>Income</th>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>

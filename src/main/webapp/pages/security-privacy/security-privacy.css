@@ -1,0 +1,119 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  color: #333;
+}
+header {
+  background: #1864ab;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  position: sticky;
+  top: 0;
+}
+.container {
+  max-width: 900px;
+  margin: 20px auto;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+h2 {
+  color: #1864ab;
+}
+.section {
+  margin-bottom: 20px;
+  padding: 15px;
+  border-left: 4px solid #1864ab;
+  background: #f9f9f9;
+  border-radius: 5px;
+}
+footer {
+  background: #1864ab;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+/* -----------------------------------------------------------------------------------------
+------------------------   RESPONSIVE DESIGN    -----------------------------------------------------------
+----------------------------------------------------------------------------------------- */
+
+@media (max-width: 1024px) {
+  .container {
+    max-width: 90%;
+    padding: 15px;
+  }
+
+  h2 {
+    font-size: 22px;
+  }
+
+  p {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    padding: 15px;
+  }
+
+  .container {
+    max-width: 95%;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  p {
+    font-size: 14px;
+  }
+
+  .section {
+    padding: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    padding: 12px;
+  }
+
+  .container {
+    width: 95%;
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 22px;
+  }
+
+  h2 {
+    font-size: 18px;
+  }
+
+  p {
+    font-size: 13px;
+  }
+
+  footer {
+    padding: 8px;
+  }
+
+  footer a {
+    display: block;
+    margin-top: 5px;
+  }
+}

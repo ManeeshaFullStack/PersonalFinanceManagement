@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="keywords"
+      content="FinTrack, Track expenses, set budgets, and achieve your financial goals"
+    />
+    <title>FinTrack - Personal finance management and budgetting system</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+      rel="stylesheet"
+    />
+    <link href="../css/index.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <!------------------------------------------------------------------------------------------------->
+    <!-------------------------------  HEADER   ------------------------------------------------------------->
+    <!------------------------------------------------------------------------------------------------->
+
+    <header class="main-header">
+      <div>
+        <img class="main-logo" src="../img/logo 5.3.png" />
+      </div>
+      <div>
+        <img class="menu" src="../img/menu-icon.png" />
+      </div>
+    </header>
+
+    <!------------------------------------------------------------------------------------------------->
+    <!-------------------------------------  MAIN LOGIN  ------------------------------------------------------------>
+    <!------------------------------------------------------------------------------------------------->
+
+    <div class="container">
+      <div class="main-img">
+        <img class="body-img" src="../img/img-2.jpg" />
+      </div>
+      <div class="main-headding">
+        <h1 class="headding-1">Take control of your finances effortlessly</h1>
+        <p class="main-para">
+          Track expenses, set budgets, and achieve your financial goals—all in
+          one place. Sign up now and start managing your money smarter!"
+        </p>
+
+        <button onclick="redirectToSignup()" class="signin-button">
+          <a class="login-nav" href="#" target="self">
+            <b> Get started on your financial journey today</b>
+          </a>
+        </button>
+
+        <script>
+          function redirectToSignup() {
+            window.location = "../pages/signup/signup.html";
+          }
+        </script>
+
+        <p class="login-para">Already a member? Log in here</p>
+
+        <button class="login-button" onclick="redirectToLogin()">
+          <!-- <a href="../Login/login.html" target="_blank"><b> Login</b></a> -->
+          <b> Login</b>
+        </button>
+      </div>
+      <script>
+        function redirectToLogin() {
+          window.location = "../pages/login/login.html";
+        }
+      </script>
+    </div>
+
+    <!------------------------------------------------------------------------------------------------->
+    <!--------------------------------------  FEATURES  ----------------------------------------------------------->
+    <!------------------------------------------------------------------------------------------------->
+
+    <div class="container-2">
+      <h2 class="headding-2">Functional Highlights and System Capabilities</h2>
+      <div class="carousel-container">
+        <div class="carousel">
+          <div class="carousel-slide">
+            <a href="#" target="_blank">
+              <img src="../img/img-10.webp" alt="Slide 1" />
+              <div class="caption">Welcome to Finance Pro</div>
+            </a>
+          </div>
+          <div class="carousel-slide">
+            <a href="#" target="_blank">
+              <img src="../img/img-11.webp" alt="Slide 2" />
+              <div class="caption">Track Your Expenses Easily</div>
+            </a>
+          </div>
+          <div class="carousel-slide">
+            <a href="#" target="_blank">
+              <img src="../img/img-12.webp" alt="Slide 3" />
+              <div class="caption">Set Budgets & Save More</div>
+            </a>
+          </div>
+          <div class="carousel-slide">
+            <a href="#" target="_blank">
+              <img src="../img/img-13.webp" alt="Slide 4" />
+              <div class="caption">Achieve Financial Freedom</div>
+            </a>
+          </div>
+          <div class="carousel-slide">
+            <a href="#" target="_blank">
+              <img src="../img/img-14.webp" alt="Slide 5" />
+              <div class="caption">Start Managing Your Money</div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+        <button class="next" onclick="moveSlide(1)">&#10095;</button>
+
+        <!-- Dots Indicator -->
+        <div class="dots-container">
+          <span class="dot" onclick="currentSlide(1)"></span>
+          <span class="dot" onclick="currentSlide(2)"></span>
+          <span class="dot" onclick="currentSlide(3)"></span>
+          <span class="dot" onclick="currentSlide(4)"></span>
+          <span class="dot" onclick="currentSlide(5)"></span>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let currentIndex = 0;
+
+      function moveSlide(step) {
+        const slides = document.querySelectorAll(".carousel-slide");
+        const totalSlides = slides.length;
+
+        currentIndex += step;
+
+        if (currentIndex >= totalSlides) {
+          currentIndex = 0;
+        } else if (currentIndex < 0) {
+          currentIndex = totalSlides - 1;
+        }
+
+        updateCarousel();
+      }
+
+      function currentSlide(index) {
+        currentIndex = index - 1;
+        updateCarousel();
+      }
+
+      function updateCarousel() {
+        const carousel = document.querySelector(".carousel");
+        const slides = document.querySelectorAll(".carousel-slide");
+        const dots = document.querySelectorAll(".dot");
+
+        carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+        dots.forEach((dot) => dot.classList.remove("active"));
+        dots[currentIndex].classList.add("active");
+      }
+
+      // Auto-slide every 3 seconds
+      setInterval(() => moveSlide(1), 3000);
+    </script>
+
+    <!------------------------------------------------------------------------------------------------->
+    <!---------------------------------  HOW IT WORKS  ---------------------------------------------------------------->
+    <!------------------------------------------------------------------------------------------------->
+    <div class="container-3">
+      <h2 class="grid-container-headding">
+        Smart Finance Hub: Track, Plan, and Achieve with Ease
+      </h2>
+      <div class="grid-container">
+        <!-- Row 1: Image Left, Content Right -->
+        <div class="grid-item">
+          <div class="image">
+            <img src="../img/img-10.webp" alt="Image 1" />
+          </div>
+          <div class="content">
+            <h2>
+              See the bigger picture—analyze your finances with insightful
+              reports
+            </h2>
+            <p>
+              Get clear insights into your income, expenses, and budget trends
+              with interactive charts and graphs to make informed financial
+              decisions.
+            </p>
+          </div>
+        </div>
+
+        <!-- Row 2: Content Left, Image Right -->
+        <div class="grid-item">
+          <div class="content">
+            <h2>
+              Track every rupee, control your spending—manage expenses with
+              ease!
+            </h2>
+            <p>
+              Easily add, update, or delete your expenses while categorizing
+              them for better tracking. Use filters to view spending patterns by
+              category or date.
+            </p>
+          </div>
+          <div class="image">
+            <img src="../img/img-11.webp" alt="Image 2" />
+          </div>
+        </div>
+
+        <!-- Row 3: Image Left, Content Right -->
+        <div class="grid-item">
+          <div class="image">
+            <img src="../img/img-12.webp" alt="Image 3" />
+          </div>
+          <div class="content">
+            <h2>
+              "Know where your money comes from—record, manage, and grow your
+              income effortlessly!"
+            </h2>
+            <p>
+              Keep track of all your income sources, log transactions, and
+              filter records by date to monitor your earnings over time.
+            </p>
+          </div>
+        </div>
+
+        <!-- Row 4: Content Left, Image Right -->
+        <div class="grid-item">
+          <div class="content">
+            <h2>Plan smarter, spend wiser—set budgets and stay in control!</h2>
+            <p>
+              Define spending limits for different categories, track your
+              progress, and get alerts when you're about to exceed your budget.
+            </p>
+          </div>
+          <div class="image">
+            <img src="../img/img-13.webp" alt="Image 4" />
+          </div>
+        </div>
+
+        <!-- Row 5: Image Left, Content Right -->
+        <div class="grid-item">
+          <div class="image">
+            <img src="../img/img-14.webp" alt="Image 5" />
+          </div>
+          <div class="content">
+            <h2>
+              Turn dreams into reality—set, track, and achieve your financial
+              goals!
+            </h2>
+            <p>
+              Set short-term and long-term financial goals, monitor your
+              progress visually, and stay motivated to achieve them.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!------------------------------------------------------------------------------------------------->
+    <!---------------------------------  ASKING TO TRY BY SIGNING UP   ---------------------------------------------------->
+    <!------------------------------------------------------------------------------------------------->
+
+    <section class="contact-section">
+      <div class="contact-container">
+        <div class="contact-text">
+          <h2>Ready to Transform Your Financial Future?</h2>
+          <p>
+            Our service is designed for individuals who strive for financial
+            stability, smarter spending, and long-term wealth. We promise that
+            using our tools will help you track, budget, and achieve your
+            financial goals with ease.
+          </p>
+        </div>
+        <form class="contact-form">
+          <div class="form-group">
+            <input type="text" placeholder="Name" required />
+            <input type="email" placeholder="Email" required />
+          </div>
+          <input type="text" placeholder="Phone Number" />
+          <textarea placeholder="Anything we should know?" rows="3"></textarea>
+          <button type="submit">sign up</button>
+        </form>
+      </div>
+    </section>
+    <!------------------------------------------------------------------------------------------------->
+    <!---------------------------------------FOOTER---------------------------------------------------------->
+    <!------------------------------------------------------------------------------------------------->
+
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-logo">
+          <img src="../img/logo 5.3.png" alt="Company Logo" />
+        </div>
+
+        <div class="footer-links">
+          <div class="footer-section">
+            <h3>About Us</h3>
+            <a href="../pages/howItWorks/howItWorks.html" target="_self"
+              >How it works</a
+            >
+            <a href="../pages/features/features.html" target="_self"
+              >Features</a
+            >
+            <a href="../pages/whyChooseUs/whyChooseUs.html" target="_self"
+              >Why Choose Us?</a
+            >
+          </div>
+
+          <div class="footer-section">
+            <h3>Stay in Control</h3>
+            <a href="../pages/successStories/successStories.html" target="_self"
+              >Success Stories</a
+            >
+            <a
+              href="../pages/security-privacy/security-privacy.html"
+              target="_self"
+              >Security & Privacy</a
+            >
+            <a href="../pages/notifications/notifications.html"
+              >Alerts & Notifications</a
+            >
+          </div>
+
+          <div class="footer-section">
+            <h3>Social links</h3>
+            <a href="#">Instagram</a>
+            <a href="#">LinkedIn</a>
+            <a href="#">YouTube</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>
+          Copyright ©
+          <a href="https://github.com/ManeeshaFullStack" target="_blank"
+            >ManeeshaFullStack</a
+          >
+        </p>
+        <p>
+          My other work
+          <a
+            href="https://maneeshafullstack.github.io/Homlyfood"
+            target="_blank"
+            >Homlyfood</a
+          >
+        </p>
+
+        <a href="../pages/security-privacy/security-privacy.html" target="_self"
+          >Terms of Service</a
+        >
+        <button onclick="scrollToTop()" class="back-to-top">
+          Back to top ↑
+        </button>
+      </div>
+    </footer>
+
+    <script>
+      function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    </script>
+
+    <!------------------------------------------------------------------------------------------------->
+    <!---------------------------------ICON LINKS---------------------------------------------------------------->
+    <!------------------------------------------------------------------------------------------------->
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+  </body>
+</html>

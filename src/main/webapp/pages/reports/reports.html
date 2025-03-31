@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Financial Reports</title>
+    <link href="reports.css" type="text/css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="main-header">
+      <div>
+        <img class="header-logo" src="../../img/logo 5.3.png" />
+      </div>
+      <div>
+        <nav class="main-navigations">
+          <a href="../income/income.html">income tracking</a>
+          <a href="../expenses/expenses.html">expense tracking</a>
+          <a href="../budget/budget.html">budget management </a>
+          <a href="../goals/goals.html">goal setting</a>
+          <a href="../reports/reports.html">financial reports</a>
+        </nav>
+      </div>
+    </div>
+    <div class="container">
+      <div>
+        <h1>Financial Reports</h1>
+        <form>
+          <lable
+            class="label-name"
+            for="reportDescription"
+            name="reportDescription"
+            >Report Description
+          </lable>
+
+          <input
+            type="textbox"
+            required
+            maxlength="80"
+            placeholder="maximum 80 characters only"
+          />
+
+          <label class="label-name" for="startingDate" name="startingDate"
+            >Starting Date</label
+          >
+          <input type="date" required />
+
+          <label class="label-name" for="endingDate" name="endingDate"
+            >Ending Date</label
+          >
+          <input type="date" required />
+
+          <label class="label-name" for="type" name="type">Type</label>
+          <select class="category" required>
+            <option value="select one">select one</option>
+            <option value="Expenses">Expenses</option>
+            <option value="Income">Income</option>
+            <option value="Budget">Budget</option>
+            <option value="Goals">Golas</option>
+          </select>
+
+          <label class="label-name" for="category" name="category"
+            >Category</label
+          >
+          <div class="expense-report">
+            <select class="category" required>
+              <option value="select one">select one</option>
+              <option value="Housing">
+                Housing (Rent, Mortgage, Property Taxes, Home Maintenance)
+              </option>
+
+              <option value="Utilities">
+                Utilities (Electricity, Water, Gas, Internet, Phone)
+              </option>
+
+              <option value="Food & Groceries">
+                Food & Groceries (Supermarket, Restaurants, Takeout, Coffee)
+              </option>
+              <option value="Transportation">
+                Transportation (Fuel, Public Transport, Car Payment, Insurance,
+                Repairs)
+              </option>
+              <option value="Health & Medical">
+                Health & Medical (Doctor Visits, Medications, Insurance, Dental)
+              </option>
+              <option value="Debt Payments">
+                Debt Payments (Credit Cards, Loans, Interest Payments)
+              </option>
+            </select>
+          </div>
+
+          <div class="income-report">
+            <select class="category" required>
+              <option value="select one">select one</option>
+              <option value="Salary/Wages">
+                Salary/Wages (Full-time, Part-time, Bonuses, Overtime)
+              </option>
+
+              <option value="Freelance Income ">
+                Freelance Income (Projects, Consulting, Side Gigs)
+              </option>
+
+              <option value="Business Income">
+                Business Income (Profits from a Business, Self-employment)
+              </option>
+              <option value="Investments">
+                Investments (Stocks, Dividends, Bonds)
+              </option>
+              <option value="Real Estate ">
+                Real Estate (Rental Income, Property Sales)
+              </option>
+              <option value="Other Sources">Other Sources</option>
+            </select>
+          </div>
+
+          <button>GENERATE REPORT</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="summary-table">
+      <div>
+        <table>
+          <tr>
+            <th>Description</th>
+            <th>Starting Date</th>
+            <th>Ending Date</th>
+            <th>Type</th>
+            <th>Category</th>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const typeSelect = document.querySelector("select.category");
+        const expenseReport = document.querySelector(".expense-report");
+        const incomeReport = document.querySelector(".income-report");
+        const categoryLabel = document.querySelector("label[for='category']");
+
+        function updateVisibility() {
+          const selectedType = typeSelect.value;
+
+          // Hide all category-related elements by default
+          expenseReport.style.display = "none";
+          incomeReport.style.display = "none";
+          categoryLabel.style.display = "none";
+
+          if (selectedType === "Expenses") {
+            expenseReport.style.display = "block";
+            categoryLabel.style.display = "block";
+          } else if (selectedType === "Income") {
+            incomeReport.style.display = "block";
+            categoryLabel.style.display = "block";
+          }
+        }
+
+        typeSelect.addEventListener("change", updateVisibility);
+        updateVisibility(); // Initialize visibility on page load
+      });
+    </script>
+  </body>
+</html>

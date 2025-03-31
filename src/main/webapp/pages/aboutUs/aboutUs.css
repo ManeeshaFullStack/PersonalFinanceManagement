@@ -1,0 +1,134 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  color: #333;
+  overflow-x: hidden;
+}
+
+header {
+  background: #1864ab;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
+  position: sticky;
+  top: 0;
+}
+
+.container {
+  max-width: 900px;
+  margin: 20px auto;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  box-sizing: border-box;
+}
+
+h2 {
+  color: #1864ab;
+}
+
+.section {
+  margin-bottom: 20px;
+  padding: 15px;
+  border-left: 4px solid #1864ab;
+  background: #f9f9f9;
+  border-radius: 5px;
+}
+
+footer {
+  background: #1864ab;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+footer p {
+  margin: 0;
+  padding: 10px;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* #############################################################################################
+#########################    RESPONSIVE DESIGN    #######################################
+############################################################################################## */
+
+/* Responsive Design for All Screens */
+
+/* Tablets and Smaller Laptops */
+@media (max-width: 1024px) {
+  .container {
+    width: 80%;
+    padding: 15px;
+  }
+
+  header {
+    padding: 15px;
+  }
+
+  .section {
+    padding: 12px;
+  }
+}
+
+/* Mobile Devices */
+@media (max-width: 768px) {
+  header {
+    font-size: 18px;
+    padding: 12px;
+  }
+
+  .container {
+    width: 90%;
+    padding: 10px;
+  }
+
+  .section {
+    padding: 10px;
+  }
+
+  footer {
+    font-size: 14px;
+    padding: 8px;
+  }
+}
+
+/* Small Mobile Screens */
+@media (max-width: 480px) {
+  header {
+    font-size: 16px;
+    padding: 10px;
+  }
+
+  .container {
+    width: 95%;
+    padding: 8px;
+  }
+
+  .section {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  footer {
+    font-size: 12px;
+    padding: 6px;
+  }
+}

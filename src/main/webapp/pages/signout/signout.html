@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Out</title>
+    <link rel="stylesheet" href="signout.css" type="text/css" />
+  </head>
+  <body>
+    <div class="signout-container">
+      <div class="signout-box">
+        <h2>Are you sure you want to sign out?</h2>
+        <p>Click "Yes" to log out or "No" to return.</p>
+        <div class="buttons">
+          <button id="yesBtn">Yes, Sign Out</button>
+          <button id="noBtn">No, Stay</button>
+        </div>
+      </div>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const yesBtn = document.getElementById("yesBtn");
+        const noBtn = document.getElementById("noBtn");
+
+        yesBtn.addEventListener("click", function () {
+          alert("You have successfully signed out.");
+          window.location.href = "../login/login.html"; // Redirect to login page
+        });
+
+        noBtn.addEventListener("click", function () {
+          window.location = "../dashboard/dashboard.html"; // Go back to the previous page
+        });
+      });
+    </script>
+  </body>
+</html>
