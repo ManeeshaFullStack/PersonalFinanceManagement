@@ -1,0 +1,268 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link href="dashboard.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <div class="main-header">
+      <div>
+        <img class="header-logo" src="../../img/logo 5.3.png" />
+      </div>
+      <div class="all-links">
+        <nav class="main-navigations">
+          <a href="<%= request.getContextPath() %>/IncomeServlet">Income tracking</a>
+          
+          <a href="../expenses/expenses.html">expense tracking</a>
+          <a href="../budget/budget.html">budget management </a>
+          <a href="../goals/goals.html">goal setting</a>
+          <a href="../reports/reports.html">financial reports</a>
+        </nav>
+        <div class="menu-container">
+          <button class="menu-button">Menu</button>
+          <div class="menu-dropdown">
+            <a href="../profile/profile.html">My Profile</a>
+            <a href="../change-password/changePassword.html">Change Password</a>
+            <a href="../notifications/notifications.html">Notifications</a>
+            <a href="../signout/signout.html">Sign Out</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dashboard-content">
+      <h2>Welcome to Your Financial Dashboard</h2>
+      <p>See how your finances will look after you start using the system.</p>
+
+      <div class="charts-container">
+        <div class="chart-box">
+          <canvas id="incomeChart"></canvas>
+          <p>"Track your income, grow your wealth!"</p>
+          <a href="../income/income.html">Go to Income Tracking</a>
+        </div>
+        <div class="chart-box">
+          <canvas id="expenseChart"></canvas>
+          <p>"Control expenses, secure your future!"</p>
+          <a href="../expenses/expenses.html">Go to Expense Tracking</a>
+        </div>
+        <div class="chart-box">
+          <canvas id="budgetChart"></canvas>
+          <p>"Plan your budget, achieve your dreams!"</p>
+          <a href="../budget/budget.html">Go to Budget Management</a>
+        </div>
+        <div class="chart-box">
+          <canvas id="goalsChart"></canvas>
+          <p>"Set goals, accomplish milestones!"</p>
+          <a href="../goals/goals.html">Go to Goal Setting</a>
+        </div>
+      </div>
+    </div>
+
+    <!---------------------------------------------------->
+    <!------------------FOOTER TO ACTION SECTION------------------->
+    <!---------------------------------------------------->
+
+    <!-- <section class="Footer"> -->
+    <footer class="section-footer">
+      <div>
+        <a href="#">
+          <img
+            class="header-logo footer-img"
+            src="../../img/logo 5.3.png"
+            alt="favicon"
+          />
+        </a>
+
+        <p class="Copyright">
+          Copyright &copy; 2025 by FinTrack, Inc. All rights reserved.
+        </p>
+      </div>
+
+      <div>
+        <p class="footer-headding">contact us</p>
+        <p class="contact-info">
+          623 Harrison St., 2nd Floor, San Francisco, CA 94107
+        </p>
+        <p>
+          <a href="tel:415-201-6370" class="number">415-201-6370</a><br />
+          <a href="mailto:hello@Homlyfood.com" class="email"
+            >hello@FinTrack.com</a
+          >
+        </p>
+      </div>
+
+      <nav>
+        <p class="footer-headding">Account</p>
+        <ul class="footer-acconts">
+          <li>
+            <a href="../signup/signup.html" class="account-links"
+              >Create account</a
+            >
+          </li>
+          <li>
+            <a href="../login/login.html" class="account-links">Sign in</a>
+          </li>
+          <li><a href="#" class="account-links">iOS app</a></li>
+          <li><a href="#" class="account-links">Android app</a></li>
+        </ul>
+      </nav>
+
+      <nav>
+        <p class="footer-headding">Company</p>
+        <ul class="footer-acconts">
+          <li>
+            <a
+              href="../aboutUs/aboutUs.html"
+              target="_self"
+              class="account-links"
+              >About us</a
+            >
+          </li>
+          <li>
+            <a
+              href="../successStories/successStories.html"
+              target="_self"
+              class="account-links"
+              >Success Stories</a
+            >
+          </li>
+          <li>
+            <a
+              href="../financialAdvices/financialAdvices.html"
+              target="_self"
+              class="account-links"
+              >Financial advices</a
+            >
+          </li>
+          <li>
+            <a href="../notifications/notifications.html" class="account-links"
+              >Alerts and Notifications</a
+            >
+          </li>
+        </ul>
+      </nav>
+
+      <nav>
+        <p class="footer-headding">Resources</p>
+        <ul class="footer-acconts">
+          <li>
+            <a
+              href="../ImportanceFinance/ImportanceFinance.html"
+              target="_self"
+              class="account-links"
+              >Importance finance</a
+            >
+          </li>
+          <li>
+            <a
+              href="../helpCenter/helpCenter.html"
+              target="_self"
+              class="account-links"
+              >Help center</a
+            >
+          </li>
+          <li>
+            <a
+              href="../security-privacy/security-privacy.html"
+              target="_self"
+              class="account-links"
+              >Privacy and terms</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </footer>
+    <!-- </section> -->
+    <div class="dev-credits">
+      <p>
+        My other work
+        <a href="https://maneeshafullstack.github.io/Homlyfood" target="_blank"
+          >Homlyfood</a
+        >
+      </p>
+      Designed &amp; Developed by
+      <a href="javascript:void(0)">Maneesha Sangam</a><br />
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const menuButton = document.querySelector(".menu-button");
+        const menuDropdown = document.querySelector(".menu-dropdown");
+
+        menuButton.addEventListener("click", function (event) {
+          event.stopPropagation();
+          menuDropdown.classList.toggle("show");
+        });
+
+        document.addEventListener("click", function () {
+          menuDropdown.classList.remove("show");
+        });
+
+        // Example chart data
+        const exampleData = {
+          income: [40, 30, 30],
+          expenses: [50, 20, 30],
+          budget: [60, 25, 15],
+          goals: [70, 15, 15],
+        };
+
+        function createChart(canvasId, data, labels, backgroundColors) {
+          new Chart(document.getElementById(canvasId), {
+            type: "pie",
+            data: {
+              labels: labels,
+              datasets: [
+                {
+                  data: data,
+                  backgroundColor: backgroundColors,
+                },
+              ],
+            },
+            options: {
+              responsive: true,
+            },
+          });
+        }
+
+        createChart(
+          "incomeChart",
+          exampleData.income,
+          ["Salary", "Freelance", "Investments"],
+          ["#4CAF50", "#FF9800", "#2196F3"]
+        );
+        createChart(
+          "expenseChart",
+          exampleData.expenses,
+          ["Housing", "Transport", "Food"],
+          ["#F44336", "#FFEB3B", "#03A9F4"]
+        );
+        createChart(
+          "budgetChart",
+          exampleData.budget,
+          ["Essentials", "Savings", "Leisure"],
+          ["#9C27B0", "#009688", "#FFC107"]
+        );
+        createChart(
+          "goalsChart",
+          exampleData.goals,
+          ["Short-term", "Mid-term", "Long-term"],
+          ["#673AB7", "#3F51B5", "#8BC34A"]
+        );
+      });
+    </script>
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+  </body>
+</html>
