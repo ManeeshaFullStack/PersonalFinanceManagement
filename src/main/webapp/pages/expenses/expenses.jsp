@@ -1,13 +1,13 @@
 <%@ page import="java.util.List" %>
-<%@ page import="com.personalfinance.model.Income" %>
+<%@ page import="com.personalfinance.model.Expense" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Income</title>
-    <link href="pages/income/income.css" type="text/css" rel="stylesheet" />
+    <title>Expense</title>
+    <link href="pages/expenses/expenses.css" type="text/css" rel="stylesheet" />
   </head>
   <body>
     <div class="main-header">
@@ -26,10 +26,10 @@
     </div>
     <div class="container">
       <div>
-        <h1>Income management</h1>
-         <form action="<%= request.getContextPath() %>/IncomeServlet" method="post">
-            <label for="description">Income Description</label>
-            <input type="text" name="description" required maxlength="100" placeholder="Maximum 100 characters only" />
+        <h1>Expense Management</h1>
+         <form action="<%= request.getContextPath() %>/ExpenseServlet" method="post">
+            <label for="description">Expense Description</label>
+            <input type="text" name="description" required maxlength="255" placeholder="Maximum 255 characters only" />
 
             <label for="amount">Amount</label>
             <input type="number" name="amount" placeholder="eg:20000" required />
@@ -38,7 +38,7 @@
             <select name="category" class="category" required>
                 <option value="">Select one</option>
                 <%
-                    List<String> categories = (List<String>) request.getAttribute("incomeCategories");
+                    List<String> categories = (List<String>) request.getAttribute("expenseCategories");
                     for (String cat : categories) {
                 %>
                     <option value="<%= cat %>"><%= cat %></option>
@@ -47,8 +47,8 @@
                 %>
             </select>
 
-            <label for="incomeDate">Income Date</label>
-            <input type="date" name="incomeDate" required />
+            <label for="expenseDate">Expense Date</label>
+            <input type="date" name="expenseDate" required />
 
             <button type="submit">SAVE</button>
         </form>
@@ -65,22 +65,22 @@
 	        <th>Income Date</th>
 	      </tr>
 	      <%
-	        List<Income> incomeList = (List<Income>) request.getAttribute("incomeList");
-	        if (incomeList != null) {
-	          for (Income income : incomeList) {
+	        List<Expense> expenseList = (List<Expense>) request.getAttribute("expenseList");
+	        if (expenseList != null) {
+	          for (Expense expense : expenseList) {
 	      %>
 	      <tr>
-	        <td><%= income.getSource() %></td>
-	        <td><%= income.getAmount() %></td>
-	        <td><%= income.getCategory() %></td>
-	        <td><%= income.getReceivedDate() %></td>
+	        <td><%= expense.getDescription() %></td>
+	        <td><%= expense.getAmount() %></td>
+	        <td><%= expense.getCategory() %></td>
+	        <td><%= expense.getExpenseDate() %></td>
 	      </tr>
 	      <%
 	          }
 	        } else {
 	      %>
 	      <tr>
-	        <td colspan="4">No income records found.</td>
+	        <td colspan="4">No expense records found.</td>
 	      </tr>
 	      <%
 	        }
