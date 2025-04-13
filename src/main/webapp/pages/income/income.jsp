@@ -21,6 +21,8 @@
           <a href="../budget/budget.html">budget management </a>
           <a href="#">goal setting</a>
           <a href="#">financial reports</a>
+          <a>|</a>
+          <a href="../reports/reports.html">Welcome, ${sessionScope.Username}</a>
         </nav>
       </div>
     </div>

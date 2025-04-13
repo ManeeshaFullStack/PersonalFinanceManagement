@@ -13,6 +13,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import com.personalfinance.config.DatabaseConnection;
+import com.personalfinance.utility.SessionUtils;
 
 /**
  * Servlet implementation class LoginServlet
@@ -44,12 +45,10 @@ public class LoginServlet extends HttpServlet {
 		String username = request.getParameter("username");
         String password = request.getParameter("password");
 
-        if (authenticateUser(username, password)) {
-            // Start session & store user
-            HttpSession session = request.getSession();
-            session.setAttribute("username", username);
-            
-            // Redirect to dashboard
+        Integer userId = authenticateUser(username, password);
+        if (userId != null) {
+        	SessionUtils.setAttribute(request, "UserId", userId);
+        	SessionUtils.setAttribute(request, "Username", getUserDisplayName(userId));
             response.sendRedirect(request.getContextPath() + "/pages/dashboard/dashboard.jsp");
         } else {
             // Invalid login, show error on Login.jsp
@@ -60,8 +59,8 @@ public class LoginServlet extends HttpServlet {
 	}
 	
 	
-	private boolean authenticateUser(String username, String password) {
-	    String sql = "SELECT COUNT(*) FROM AppUsers WHERE LOWER(Email) = LOWER(?) AND Password = ?";
+	private Integer authenticateUser(String username, String password) {
+	    String sql = "SELECT UserId FROM AppUsers WHERE LOWER(Email) = LOWER(?) AND Password = ?";
 
 	    try (Connection conn = DatabaseConnection.getConnection();
 	         PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -71,12 +70,29 @@ public class LoginServlet extends HttpServlet {
 
 	        ResultSet rs = stmt.executeQuery();
 	        if (rs.next()) {
-	            return rs.getInt(1) > 0; // Check if user exists
+	            return rs.getInt("UserId"); // Return the UserId if authentication is successful
 	        }
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	    }
-	    return false;
+	    return null;
+	}
+	
+	private String getUserDisplayName(Integer userId) {
+	    String sql = "SELECT Username FROM AppUsers WHERE UserId = ?";
+
+	    try (Connection conn = DatabaseConnection.getConnection();
+	         PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+	        stmt.setInt(1, userId);
+	        ResultSet rs = stmt.executeQuery();
+	        if (rs.next()) {
+	            return rs.getString("Username"); // Return the UserId if authentication is successful
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    return null;
 	}
 
 

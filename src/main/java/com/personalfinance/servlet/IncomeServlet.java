@@ -16,6 +16,7 @@ import java.util.List;
 
 import com.personalfinance.config.DatabaseConnection;
 import com.personalfinance.model.Income;
+import com.personalfinance.utility.SessionUtils;
 
 /**
  * Servlet implementation class IncomeServlet
@@ -63,7 +64,9 @@ public class IncomeServlet extends HttpServlet {
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sqlIncomeList)) {
 
-            stmt.setInt(1, 1); // Replace with actual user ID from session
+        	Integer userId = (Integer) SessionUtils.getAttribute(request, "UserId");
+        	
+            stmt.setInt(1, userId); // Replace with actual user ID from session
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
@@ -98,7 +101,8 @@ public class IncomeServlet extends HttpServlet {
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-            stmt.setInt(1, 1); // replace with logged-in user's ID (e.g., from session)
+        	Integer userId = (Integer) SessionUtils.getAttribute(request, "UserId");
+            stmt.setInt(1, userId); // replace with logged-in user's ID (e.g., from session)
             stmt.setDouble(2, Double.parseDouble(amount));
             stmt.setString(3, description);
             stmt.setDate(4, Date.valueOf(incomeDate));

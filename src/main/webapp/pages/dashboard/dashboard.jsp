@@ -14,6 +14,8 @@
       <div>
         <img class="header-logo" src="../../img/logo 5.3.png" />
       </div>
+      <p></p>
+      
       <div class="all-links">
         <nav class="main-navigations">
           <a href="<%= request.getContextPath() %>/IncomeServlet">Income tracking</a>
@@ -21,6 +23,8 @@
           <a href="../budget/budget.html">budget management </a>
           <a href="../goals/goals.html">goal setting</a>
           <a href="../reports/reports.html">financial reports</a>
+          <a>|</a>
+          <a href="../reports/reports.html">Welcome, ${sessionScope.Username}</a>
         </nav>
         <div class="menu-container">
           <button class="menu-button">Menu</button>
