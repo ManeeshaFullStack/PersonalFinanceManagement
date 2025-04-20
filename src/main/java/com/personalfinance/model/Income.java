@@ -3,12 +3,16 @@ package com.personalfinance.model;
 import java.sql.Date;
 
 public class Income {
+	private int incomeId;
     private String source;
     private double amount;
     private String category;
     private Date receivedDate;
 
     // Getters and Setters
+    public int getIncomeId() { return incomeId; }
+    public void setIncomeId(int incomeId) { this.incomeId = incomeId; }
+    
     public String getSource() { return source; }
     public void setSource(String source) { this.source = source; }
 

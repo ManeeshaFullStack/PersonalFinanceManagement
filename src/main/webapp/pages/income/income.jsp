@@ -67,6 +67,7 @@
 		        <th>Amount</th>
 		        <th>Category</th>
 		        <th>Income Date</th>
+		         <th>Delete</th>
 		      </tr>
 		      <%
 		        List<Income> incomeList = (List<Income>) request.getAttribute("incomeList");
@@ -78,9 +79,16 @@
 		        <td><%= income.getAmount() %></td>
 		        <td><%= income.getCategory() %></td>
 		        <td><%= income.getReceivedDate() %></td>
+		        <td>
+			      <form action="<%= request.getContextPath() %>/IncomeServlet" method="post" onsubmit="return confirm('Are you sure you want to delete this record?');">
+			        <input type="hidden" name="IncomeId" value="<%= income.getIncomeId() %>" />
+			         <input type="hidden" name="action" value="delete" />
+			         <button style="margin-top:0px" class="delete-button" type="submit"><ion-icon name="trash-outline"></ion-icon></button>
+			      </form>
+    			</td>
 		      </tr>
 		      <%
-		          }
+		       }
 		        } else {
 		      %>
 		      <tr>
@@ -93,5 +101,7 @@
 		  </div>
 		</div>
 	</div>
+	<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script  nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
   </body>
 </html>

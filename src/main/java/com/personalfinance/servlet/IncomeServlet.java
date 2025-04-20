@@ -33,9 +33,7 @@ public class IncomeServlet extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        // Load income categories from DB
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<String> categories = new ArrayList<>();
 
         String sql = "SELECT Name FROM Categories WHERE Type = 'Income'";
@@ -56,7 +54,7 @@ public class IncomeServlet extends HttpServlet {
         
         // New code to fetch income records
         List<Income> incomeList = new ArrayList<>();
-        String sqlIncomeList = "SELECT i.Source, i.Amount, c.Name AS Category, i.ReceivedDate " +
+        String sqlIncomeList = "SELECT i.IncomeId, i.Source, i.Amount, c.Name AS Category, i.ReceivedDate " +
                      "FROM Income i " +
                      "JOIN Categories c ON i.CategoryId = c.CategoryId " +
                      "WHERE i.UserId = ?";
@@ -71,6 +69,7 @@ public class IncomeServlet extends HttpServlet {
 
             while (rs.next()) {
                 Income income = new Income();
+                income.setIncomeId(rs.getInt("IncomeId"));
                 income.setSource(rs.getString("Source"));
                 income.setAmount(rs.getDouble("Amount"));
                 income.setCategory(rs.getString("Category"));
@@ -87,9 +86,31 @@ public class IncomeServlet extends HttpServlet {
         request.getRequestDispatcher("/pages/income/income.jsp").forward(request, response);
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        // Handle form submission
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	
+    	String action = request.getParameter("action");
+    	
+        if (action == null) action = "insert";
+
+        try {
+            switch (action) {
+                case "insert":
+                    addIncome(request, response);
+                    break;
+               
+                case "delete":
+                    deleteIncome(request, response);
+                    break;
+                default:
+                	addIncome(request, response);
+                    break;
+            }
+        } catch (SQLException e) {
+            throw new ServletException(e);
+        }
+    }
+    
+    private void addIncome(HttpServletRequest request, HttpServletResponse response)  throws SQLException, IOException {
         String description = request.getParameter("description");
         String amount = request.getParameter("amount");
         String category = request.getParameter("category");
@@ -113,8 +134,23 @@ public class IncomeServlet extends HttpServlet {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-        response.sendRedirect(request.getContextPath() + "/IncomeServlet"); // reload page
+        
+        response.sendRedirect(request.getContextPath() + "/IncomeServlet");
     }
+    
+    protected void deleteIncome(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
+        
+    	int incomeId = Integer.parseInt(request.getParameter("IncomeId"));
 
+        String sql = "DELETE FROM Income WHERE IncomeId = ?";
+
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setInt(1, incomeId);
+            pstmt.executeUpdate();
+        }
+
+        response.sendRedirect(request.getContextPath() + "/IncomeServlet");
+    }
 }

@@ -4,12 +4,16 @@ import java.sql.Date;
 
 public class Expense {
 
+	private int expenseId;
     private String description;
     private double amount;
     private String category;
     private Date expenseDate;
 
     // Getters and Setters
+    public int getExpenseId() { return expenseId; }
+    public void setExpenseId(int expenseId) { this.expenseId = expenseId; }
+    
     public String getDescription() { return description; }
     public void setDescription(String description) { this.description = description; }
 

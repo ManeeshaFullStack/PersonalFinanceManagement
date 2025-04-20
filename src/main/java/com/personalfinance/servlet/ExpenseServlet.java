@@ -59,7 +59,7 @@ public class ExpenseServlet extends HttpServlet {
         
         // New code to fetch income records
         List<Expense> expenseList = new ArrayList<>();
-        String sqlIncomeList = "SELECT e.Description, e.Amount, c.Name AS Category, e.ExpenseDate " +
+        String sqlIncomeList = "SELECT e.ExpenseId, e.Description, e.Amount, c.Name AS Category, e.ExpenseDate " +
                      "FROM Expenses e " +
                      "JOIN Categories c ON e.CategoryId = c.CategoryId " +
                      "WHERE e.UserId = ?";
@@ -74,6 +74,7 @@ public class ExpenseServlet extends HttpServlet {
 
             while (rs.next()) {
             	Expense expense = new Expense();
+            	expense.setExpenseId(rs.getInt("ExpenseId"));
             	expense.setDescription(rs.getString("Description"));
             	expense.setAmount(rs.getDouble("Amount"));
             	expense.setCategory(rs.getString("Category"));
@@ -90,8 +91,31 @@ public class ExpenseServlet extends HttpServlet {
         request.getRequestDispatcher("/pages/expenses/expenses.jsp").forward(request, response);
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	
+    	String action = request.getParameter("action");
+    	
+        if (action == null) action = "insert";
+
+        try {
+            switch (action) {
+                case "insert":
+                    addExpense(request, response);
+                    break;
+               
+                case "delete":
+                    deleteExpense(request, response);
+                    break;
+                default:
+                	addExpense(request, response);
+                    break;
+            }
+        } catch (SQLException e) {
+            throw new ServletException(e);
+        }
+    }
+    
+    private void addExpense(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Handle form submission
         String description = request.getParameter("description");
         String amount = request.getParameter("amount");
@@ -121,4 +145,19 @@ public class ExpenseServlet extends HttpServlet {
     }
 
 
+    private void deleteExpense(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
+        
+    	int incomeId = Integer.parseInt(request.getParameter("ExpenseId"));
+
+        String sql = "DELETE FROM Expenses WHERE ExpenseId = ?";
+
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setInt(1, incomeId);
+            pstmt.executeUpdate();
+        }
+
+        response.sendRedirect(request.getContextPath() + "/ExpenseServlet");
+    }
 }

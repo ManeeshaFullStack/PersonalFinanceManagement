@@ -203,4 +203,13 @@ button:hover {
     text-align: center;
     justify-content: center;
   }
+  
+}
+
+  .delete-button {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
 }
