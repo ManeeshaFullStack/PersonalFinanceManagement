@@ -53,7 +53,7 @@
 
         <script>
           function redirectToSignup() {
-            window.location = "../pages/signup/signup.html";
+            window.location = "<%= request.getContextPath() %>/pages/signup/signup.jsp";
           }
         </script>
 
@@ -66,7 +66,7 @@
       </div>
       <script>
         function redirectToLogin() {
-          window.location = "../pages/login/login.html";
+          window.location = "<%= request.getContextPath() %>/pages/login/login.jsp";
         }
       </script>
     </div>

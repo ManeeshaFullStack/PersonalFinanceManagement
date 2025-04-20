@@ -102,7 +102,7 @@ public class UserServlet extends HttpServlet {
         }
 
         // Redirect back to UserServlet to refresh the user list
-        response.sendRedirect(request.getContextPath() + "/UserServlet");
+        response.sendRedirect(request.getContextPath() + "/LoginServlet");
     }
 
     private void getUser(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {

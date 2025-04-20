@@ -1,0 +1,67 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SignUP</title>
+    <link rel="stylesheet" href="signup.css" type="text/css" />
+  </head>
+  <body>
+    <div class="signup-div">
+      <div>
+        <img class="signup-img" src="../../img/signup-2.png" />
+      </div>
+
+      <div class="signup-form">
+        <img class="signup-logo" src="../../img/logo 5.3.png" />
+        <h2>Your Path to Financial Freedom!</h2>
+        <form action="<%= request.getContextPath() %>/UserServlet" method="post">
+          <label for="userName">User Name</label><br />
+          <input
+            type="text"
+            required
+            maxlength="20"
+            placeholder="Maneesha Sangam"
+            name="username"
+          /><br /><br />
+          <label for="email">Email</label><br />
+          <input
+            type="email"
+            placeholder="example123@gmail.com"
+            name="email" 
+            required
+          /><br /><br />
+          <label for="password">Password</label><br />
+          <input
+            type="password"
+            name="password"
+            required
+          /><br /><br />
+          <label for="confirm password">Confirm Password</label><br />
+          <input
+            type="password"
+            required
+          /><br /><br />
+          <div class="button">
+            <div>
+              <p>Already have an account?</p>
+              <button onclick="redirectToLogin()" class="login">Login</button>
+            </div>
+
+            <script>
+              function redirectToLogin() {
+                window.location = "<%= request.getContextPath() %>/pages/login/login.jsp";
+              }
+            </script>
+
+            <div class="submit-button">
+              <button class="submit">Submit</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

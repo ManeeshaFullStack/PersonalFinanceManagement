@@ -23,36 +23,28 @@
 				</div>
 				
 				<button type="submit" class="login-btn">Login</button>
-							<%
-    String errorMessage = (String) session.getAttribute("errorMessage");
-    if (errorMessage != null) {
-        out.print("<p class='error' style='color:red'>" + errorMessage + "</p>");
-        session.removeAttribute("errorMessage"); // Clear after displaying
-    }
-%>
+				  <%
+					    String errorMessage = (String) session.getAttribute("errorMessage");
+					    if (errorMessage != null) {
+					        out.print("<p class='error' style='color:red'>" + errorMessage + "</p>");
+					        session.removeAttribute("errorMessage");
+					    }
+					%>
 			</form>
 
-<a href="../forgot-password/forgot-password.html" class="forgot-password">Forgot password?</a>
-
-
+			<a href="../forgot-password/forgot-password.html" class="forgot-password">Forgot password?</a>
 
 			<p class="do-not-have-account">Don't have an account?</p>
-			<button onclick="redirectToSignup()" class="login-btn">Sign
-				up</button>
-
+			<button onclick="redirectToSignup()" class="login-btn">Sign up</button>
 
 			<script>
 				function redirectToSignup() {
-					window.location = "../signup/signup.html";
-				}
-
-				function redirectToDashboard() {
-					window.location = "../dashboard/dashboard.html";
+					window.location = "<%= request.getContextPath() %>/pages/signup/signup.jsp";
 				}
 			</script>
 
 			<div class="back">
-				<a href="../index.html">
+				<a href="<%= request.getContextPath() %>/pages/index.jsp">
 
 					<div>
 						<ion-icon class="backTohome-icon" name="arrow-back-circle-outline"></ion-icon>
