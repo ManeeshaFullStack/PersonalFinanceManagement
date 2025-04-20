@@ -26,7 +26,6 @@
           <a href="<%= request.getContextPath() %>/ExpenseServlet">Expense tracking</a>
           <a href="../budget/budget.html">budget management </a>
           <a href="../goals/goals.html">goal setting</a>
-          <a href="../reports/reports.html">financial reports</a>
         </nav>
         <div class="menu-container">
           <button class="menu-button">Welcome, ${sessionScope.Username}</button>

@@ -135,7 +135,8 @@ input::placeholder {
 }
 
 .summary-table th {
-  background-color: #1c7ed6; /* Highlight headers */
+  background: #007bff;
+  color: white;
 }
 
 button:hover {
@@ -202,7 +203,7 @@ button:hover {
   }
 }
 
-  .delete-button {
+  .custom-button {
     background: #007bff;
     color: white;
     border: none;

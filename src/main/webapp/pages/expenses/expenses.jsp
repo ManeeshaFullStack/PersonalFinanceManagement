@@ -22,7 +22,6 @@
           <a href="<%= request.getContextPath() %>/ExpenseServlet">Expense tracking</a>
           <a href="../budget/budget.html">budget management </a>
           <a href="#">goal setting</a>
-          <a href="#">financial reports</a>
         </nav>
       </div>
     </div>
@@ -53,7 +52,7 @@
 	            <label for="expenseDate">Expense Date</label>
 	            <input type="date" name="expenseDate" required />
 	
-	            <button type="submit">SAVE</button>
+	            <button type="submit" class="custom-button">Save</button>
 	        </form>
 	      </div>
 	    </div>
@@ -82,7 +81,7 @@
 			      <form action="<%= request.getContextPath() %>/ExpenseServlet" method="post" onsubmit="return confirm('Are you sure you want to delete this record?');">
 			        <input type="hidden" name="ExpenseId" value="<%= expense.getExpenseId() %>" />
 			         <input type="hidden" name="action" value="delete" />
-			         <button style="margin-top:0px" class="delete-button" type="submit"><ion-icon name="trash-outline"></ion-icon></button>
+			         <button style="margin-top:0px" class="custom-button" type="submit"><ion-icon name="trash-outline"></ion-icon></button>
 			      </form>
     			</td>
 		      </tr>
