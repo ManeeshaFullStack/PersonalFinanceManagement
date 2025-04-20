@@ -24,12 +24,18 @@ body {
   top: 0px;
   border-bottom: 3px solid #1864ab;
   background-color: #fff;
-  box-shadow: 0 10px 20px #a5d8ff;
+  
 }
 
 .main-navigations a:hover {
   text-decoration: underline;
   color: #364fc7;
+}
+
+.all-links {
+    display: flex;
+    gap: 20px;
+    align-items: center;
 }
 
 .header-logo {
@@ -38,7 +44,6 @@ body {
 }
 
 .main-navigations {
-  font-size: 18pxpx;
   display: flex;
   gap: 30px;
   text-transform: uppercase;
@@ -49,12 +54,19 @@ body {
   color: #1971c2;
 }
 
+.whole-container{
+	display:flex;
+	gap:30px;
+	justify-content:center;
+	padding:40px;
+}
+
 .container {
   width: 400px;
   /* height: 600px; */
   /* display: flex;
   justify-self: left; */
-  margin: 50px;
+  
   padding-top: 16px;
   padding-bottom: 16px;
   padding-left: 32px;

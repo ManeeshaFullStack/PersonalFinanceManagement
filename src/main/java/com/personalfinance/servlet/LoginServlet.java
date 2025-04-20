@@ -49,7 +49,7 @@ public class LoginServlet extends HttpServlet {
         if (userId != null) {
         	SessionUtils.setAttribute(request, "UserId", userId);
         	SessionUtils.setAttribute(request, "Username", getUserDisplayName(userId));
-            response.sendRedirect(request.getContextPath() + "/pages/dashboard/dashboard.jsp");
+            response.sendRedirect(request.getContextPath() + "/DashboardServlet");
         } else {
             // Invalid login, show error on Login.jsp
         	HttpSession session = request.getSession();
@@ -94,6 +94,4 @@ public class LoginServlet extends HttpServlet {
 	    }
 	    return null;
 	}
-
-
 }
