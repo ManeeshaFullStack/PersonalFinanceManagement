@@ -60,7 +60,18 @@
 			          	<label>Total Balance: <span>₹ <%= request.getAttribute("totalBalance") %></span></label>
 			          	<br />
 			          </div>
-					 <div>
+			          
+			          <div>
+			          	<label>Budget Status: <span><%= request.getAttribute("budgetStatus") %></span></label>
+			          	<br />
+			          </div>
+			          
+			          <div>
+			          	<label>Goal Status: <span><%= request.getAttribute("goalStatus") %></span></label>
+			          	<br />
+			          </div>
+			          
+					  <div>
 			          	<label>From:</label><input id="fromDate" name="fromDate"  type="date" />
 			          </div>
 			          <div>

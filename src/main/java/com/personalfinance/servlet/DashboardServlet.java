@@ -135,10 +135,62 @@ public class DashboardServlet extends HttpServlet {
 
         double totalBalance = totalIncome - totalExpenses;
 
+        // Check Budget
+        double totalBudget = 0.0;
+        String budgetSql = "SELECT SUM(Amount) AS TotalBudget FROM Budgets WHERE UserId = ? AND StartDate <= ? AND EndDate >= ?";
+
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(budgetSql)) {
+            
+            stmt.setInt(1, userId);
+            stmt.setDate(2, java.sql.Date.valueOf(toDate));
+            stmt.setDate(3, java.sql.Date.valueOf(fromDate));
+
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                totalBudget = rs.getDouble("TotalBudget");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        String budgetStatus = totalExpenses <= totalBudget ? "Within Budget" : "Over Budget";
+
+     // --- Check Goal Status ---
+        String goalStatus = "No Active Goal";
+        double totalGoalAmount = 0.0;
+
+        // Fetch total goal amount where target date is still valid
+        String goalSql = "SELECT SUM(Amount) AS TotalGoalAmount FROM Goals WHERE UserId = ? AND TargetDate >= ?";
+
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(goalSql)) {
+
+            stmt.setInt(1, userId);
+            stmt.setDate(2, java.sql.Date.valueOf(toDate));
+
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                totalGoalAmount = rs.getDouble("TotalGoalAmount");
+
+                if (totalGoalAmount > 0) {
+                    if (totalBalance >= totalGoalAmount) {
+                        goalStatus = "Goal Achieved";
+                    } else {
+                        goalStatus = "Goal In Progress";
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
         // Set attributes to pass to JSP
         request.setAttribute("totalIncome", totalIncome);
         request.setAttribute("totalExpenses", totalExpenses);
         request.setAttribute("totalBalance", totalBalance);
+        request.setAttribute("budgetStatus", budgetStatus);
+        request.setAttribute("goalStatus", goalStatus);
         
         request.getRequestDispatcher("/pages/dashboard/dashboard.jsp").forward(request, response);
 
