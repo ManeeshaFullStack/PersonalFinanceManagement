@@ -23,12 +23,11 @@
         const noBtn = document.getElementById("noBtn");
 
         yesBtn.addEventListener("click", function () {
-          alert("You have successfully signed out.");
-          window.location.href = "../login/login.html"; // Redirect to login page
+          window.location.href = "<%= request.getContextPath() %>/LogoutServlet"; // Clear session and Redirect to login page
         });
 
         noBtn.addEventListener("click", function () {
-          window.location = "../dashboard/dashboard.html"; // Go back to the previous page
+          window.location = "<%= request.getContextPath() %>/DashboardServlet"; // Go back to the previous page
         });
       });
     </script>

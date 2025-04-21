@@ -33,7 +33,7 @@
             <a href="../profile/profile.html">My Profile</a>
             <a href="../change-password/changePassword.html">Change Password</a>
             <a href="../notifications/notifications.html">Notifications</a>
-            <a href="../signout/signout.html">Sign Out</a>
+            <a href="<%= request.getContextPath() %>/pages/signout/signout.jsp">Sign Out</a>
           </div>
         </div>
       </div>

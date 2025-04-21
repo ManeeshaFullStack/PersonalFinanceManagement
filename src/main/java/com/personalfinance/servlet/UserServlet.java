@@ -7,6 +7,7 @@ import java.util.List;
 
 import com.personalfinance.config.DatabaseConnection;
 import com.personalfinance.model.User;
+import com.personalfinance.utility.PasswordUtil;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -89,6 +90,9 @@ public class UserServlet extends HttpServlet {
         String username = request.getParameter("username");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
+        
+        // Hash the password
+        String hashedPassword = PasswordUtil.hashPassword(password);
 
         String sql = "INSERT INTO AppUsers (Username, Email, Password) VALUES (?, ?, ?)";
 
@@ -97,8 +101,11 @@ public class UserServlet extends HttpServlet {
 
             stmt.setString(1, username);
             stmt.setString(2, email);
-            stmt.setString(3, password);
+            stmt.setString(3, hashedPassword);
             stmt.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace(); // Log the full SQL exception
+            response.getWriter().println("Database error: " + e.getMessage());
         }
 
         // Redirect back to UserServlet to refresh the user list

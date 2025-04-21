@@ -41,7 +41,7 @@
       <div class="main-headding">
         <h1 class="headding-1">Take control of your finances effortlessly</h1>
         <p class="main-para">
-          Track expenses, set budgets, and achieve your financial goals—all in
+          Track expenses, set budgets, and achieve your financial goals - all in
           one place. Sign up now and start managing your money smarter!"
         </p>
 
@@ -179,7 +179,7 @@
           </div>
           <div class="content">
             <h2>
-              See the bigger picture—analyze your finances with insightful
+              See the bigger picture - analyze your finances with insightful
               reports
             </h2>
             <p>
@@ -194,7 +194,7 @@
         <div class="grid-item">
           <div class="content">
             <h2>
-              Track every rupee, control your spending—manage expenses with
+              Track every rupee, control your spending - manage expenses with
               ease!
             </h2>
             <p>
@@ -215,7 +215,7 @@
           </div>
           <div class="content">
             <h2>
-              "Know where your money comes from—record, manage, and grow your
+              "Know where your money comes from - record, manage, and grow your
               income effortlessly!"
             </h2>
             <p>
@@ -223,12 +223,12 @@
               filter records by date to monitor your earnings over time.
             </p>
           </div>
-        </div>
+		</div>
 
         <!-- Row 4: Content Left, Image Right -->
         <div class="grid-item">
           <div class="content">
-            <h2>Plan smarter, spend wiser—set budgets and stay in control!</h2>
+            <h2>Plan smarter, spend wiser - set budgets and stay in control!</h2>
             <p>
               Define spending limits for different categories, track your
               progress, and get alerts when you're about to exceed your budget.
@@ -246,7 +246,7 @@
           </div>
           <div class="content">
             <h2>
-              Turn dreams into reality—set, track, and achieve your financial
+              Turn dreams into reality - set, track, and achieve your financial
               goals!
             </h2>
             <p>
@@ -334,7 +334,7 @@
 
       <div class="footer-bottom">
         <p>
-          Copyright ©
+          Copyright �
           <a href="https://github.com/ManeeshaFullStack" target="_blank"
             >ManeeshaFullStack</a
           >
@@ -351,9 +351,7 @@
         <a href="../pages/security-privacy/security-privacy.html" target="_self"
           >Terms of Service</a
         >
-        <button onclick="scrollToTop()" class="back-to-top">
-          Back to top ↑
-        </button>
+        <button onclick="scrollToTop()" class="back-to-top">Back to top &uarr;</button>
       </div>
     </footer>
 
