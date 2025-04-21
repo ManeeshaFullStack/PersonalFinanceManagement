@@ -15,54 +15,52 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.personalfinance.config.DatabaseConnection;
-import com.personalfinance.model.Budget;
+import com.personalfinance.model.Goal;
 import com.personalfinance.utility.SessionUtils;
 
 /**
- * Servlet implementation class BudgetServlet
+ * Servlet implementation class GoalServlet
  */
-@WebServlet("/BudgetServlet")
-public class BudgetServlet extends HttpServlet {
+@WebServlet("/GoalServlet")
+public class GoalServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BudgetServlet() {
+    public GoalServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
-    	List<Budget> budgetList = new ArrayList<>();
-        String sqlBudgetList = "SELECT BudgetId, UserId, Amount, Description, StartDate, EndDate " +
-                               "FROM Budgets WHERE UserId = ?";
+        List<Goal> goalList = new ArrayList<>();
+        String sql = "SELECT GoalId, UserId, Amount, Description, TargetDate, Progress FROM Goals WHERE UserId = ?";
 
         try (Connection conn = DatabaseConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sqlBudgetList)) {
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             Integer userId = (Integer) SessionUtils.getAttribute(request, "UserId");
             stmt.setInt(1, userId);
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
-                Budget budget = new Budget();
-                budget.setBudgetId(rs.getInt("BudgetId"));
-                budget.setUserId(rs.getInt("UserId"));
-                budget.setAmount(rs.getDouble("Amount"));
-                budget.setDescription(rs.getString("Description"));
-                budget.setStartDate(rs.getDate("StartDate"));
-                budget.setEndDate(rs.getDate("EndDate"));
-                budgetList.add(budget);
+                Goal goal = new Goal();
+                goal.setGoalId(rs.getInt("GoalId"));
+                goal.setUserId(rs.getInt("UserId"));
+                goal.setAmount(rs.getDouble("Amount"));
+                goal.setDescription(rs.getString("Description"));
+                goal.setTargetDate(rs.getDate("TargetDate"));
+                goal.setProgress(rs.getDouble("Progress"));
+                goalList.add(goal);
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        request.setAttribute("budgetList", budgetList);
-        request.getRequestDispatcher("/pages/budget/budget.jsp").forward(request, response);
+        request.setAttribute("goalList", goalList);
+        request.getRequestDispatcher("/pages/goals/goals.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -72,13 +70,13 @@ public class BudgetServlet extends HttpServlet {
         try {
             switch (action) {
                 case "insert":
-                    addBudget(request, response);
+                    addGoal(request, response);
                     break;
                 case "delete":
-                    deleteBudget(request, response);
+                    deleteGoal(request, response);
                     break;
                 default:
-                    addBudget(request, response);
+                    addGoal(request, response);
                     break;
             }
         } catch (SQLException e) {
@@ -86,45 +84,42 @@ public class BudgetServlet extends HttpServlet {
         }
     }
 
-    private void addBudget(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
-        String amountStr = request.getParameter("budgetAmount");
-        String description = request.getParameter("budgetDescription");
-        String startDate = request.getParameter("startingDate");
-        String endDate = request.getParameter("endingDate");
+    private void addGoal(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
+        String amountStr = request.getParameter("goalAmount");
+        String description = request.getParameter("goalDescription");
+        String targetDate = request.getParameter("targerDate");
 
-        String sql = "INSERT INTO Budgets (UserId, Amount, Description, StartDate, EndDate) " +
-                     "VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Goals (UserId, Amount, Description, TargetDate, Progress) VALUES (?, ?, ?, ?, 0)";
 
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             Integer userId = (Integer) SessionUtils.getAttribute(request, "UserId");
+
             stmt.setInt(1, userId);
             stmt.setDouble(2, Double.parseDouble(amountStr));
             stmt.setString(3, description);
-            stmt.setDate(4, Date.valueOf(startDate));
-            stmt.setDate(5, Date.valueOf(endDate));
+            stmt.setDate(4, Date.valueOf(targetDate));
 
             stmt.executeUpdate();
         }
 
-        response.sendRedirect(request.getContextPath() + "/BudgetServlet");
+        response.sendRedirect(request.getContextPath() + "/GoalServlet");
     }
 
-    private void deleteBudget(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
-        int budgetId = Integer.parseInt(request.getParameter("BudgetId"));
+    private void deleteGoal(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
+        int goalId = Integer.parseInt(request.getParameter("GoalId"));
 
-        String sql = "DELETE FROM Budgets WHERE BudgetId = ?";
+        String sql = "DELETE FROM Goals WHERE GoalId = ?";
 
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
-            pstmt.setInt(1, budgetId);
+            pstmt.setInt(1, goalId);
             pstmt.executeUpdate();
         }
 
-        response.sendRedirect(request.getContextPath() + "/BudgetServlet");
+        response.sendRedirect(request.getContextPath() + "/GoalServlet");
     }
 
 }
-
