@@ -13,7 +13,7 @@
 	    <nav class="main-navigations">
 	      <a href="<%= request.getContextPath() %>/IncomeServlet">Income tracking</a>
 	      <a href="<%= request.getContextPath() %>/ExpenseServlet">Expense tracking</a>
-	      <a href="../budget/budget.html">budget management</a>
+	      <a href="<%= request.getContextPath() %>/BudgetServlet">budget management</a>
 	      <a href="#">goal setting</a>
 	    </nav>
     </div>

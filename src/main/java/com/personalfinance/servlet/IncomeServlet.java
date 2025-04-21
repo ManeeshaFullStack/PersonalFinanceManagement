@@ -52,7 +52,7 @@ public class IncomeServlet extends HttpServlet {
 
         request.setAttribute("incomeCategories", categories);
         
-        // New code to fetch income records
+        // code to fetch income records
         List<Income> incomeList = new ArrayList<>();
         String sqlIncomeList = "SELECT i.IncomeId, i.Source, i.Amount, c.Name AS Category, i.ReceivedDate " +
                      "FROM Income i " +

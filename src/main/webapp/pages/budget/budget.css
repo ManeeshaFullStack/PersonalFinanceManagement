@@ -6,39 +6,10 @@ body {
   background-size: cover;
   background-color: #f8f9fa;
 }
-.main-header {
-  display: flex;
-  /* background-color: aqua; */
-  justify-content: space-between;
-  align-items: center;
-  padding: 5px 15px;
-  position: sticky;
-  top: 0px;
-  border-bottom: 3px solid #1864ab;
-  background-color: #fff;
-  box-shadow: 0 10px 20px #a5d8ff;
-}
-
-.main-navigations a:hover {
-  text-decoration: underline;
-  color: #364fc7;
-}
-
-.header-logo {
-  height: 60px;
-  width: 250px;
-}
-
-.main-navigations {
-  font-size: 18pxpx;
-  display: flex;
-  gap: 30px;
-  text-transform: uppercase;
-}
-
-.main-navigations a {
-  text-decoration: none;
-  color: #1971c2;
+ 
+ .menu-button{
+	margin-top:0px;
+	font-size:13px;
 }
 
 .container {
@@ -220,4 +191,12 @@ button:hover {
   .summary-table table {
     width: 100%;
   }
+}
+
+  .custom-button {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
 }
