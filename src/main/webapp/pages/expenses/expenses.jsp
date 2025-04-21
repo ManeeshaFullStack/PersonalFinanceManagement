@@ -10,21 +10,9 @@
     <link href="pages/expenses/expenses.css" type="text/css" rel="stylesheet" />
   </head>
   <body>
-    <div class="main-header">
-      <div>
-		<a href="<%= request.getContextPath() %>/DashboardServlet">
-      		<img class="header-logo" src="<%= request.getContextPath() %>/img/logo 5.3.png" />
-      	</a>
-      </div>
-      <div>
-        <nav class="main-navigations">
-          <a href="<%= request.getContextPath() %>/IncomeServlet">Income tracking</a>
-          <a href="<%= request.getContextPath() %>/ExpenseServlet">Expense tracking</a>
-          <a href="../budget/budget.html">budget management </a>
-          <a href="#">goal setting</a>
-        </nav>
-      </div>
-    </div>
+  
+	<jsp:include page="/pages/includes/header.jsp" />
+    
     <div class="whole-container">
 	    <div class="container">
 	      <div>
@@ -69,7 +57,7 @@
 		      </tr>
 		      <%
 		        List<Expense> expenseList = (List<Expense>) request.getAttribute("expenseList");
-		        if (expenseList != null) {
+		        if (expenseList != null && !expenseList.isEmpty()) {
 		          for (Expense expense : expenseList) {
 		      %>
 		      <tr>
@@ -90,7 +78,7 @@
 		        } else {
 		      %>
 		      <tr>
-		        <td colspan="4">No expense records found.</td>
+		        <td colspan="5">No expense records found.</td>
 		      </tr>
 		      <%
 		        }

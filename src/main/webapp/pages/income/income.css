@@ -6,46 +6,11 @@ body {
   background-size: cover;
   background-color: #f8f9fa;
 }
-.main-header {
-  display: flex;
-  /* background-color: aqua; */
-  justify-content: space-between;
-  align-items: center;
-  padding: 5px 15px;
-  position: sticky;
-  top: 0px;
-  border-bottom: 3px solid #1864ab;
-  background-color: #fff;
-  
-}
 
-.main-navigations a:hover {
-  text-decoration: underline;
-  color: #364fc7;
+.menu-button{
+	margin-top:0px;
+	font-size:13px;
 }
-
-.all-links {
-    display: flex;
-    gap: 20px;
-    align-items: center;
-}
-
-.header-logo {
-  height: 60px;
-  width: 250px;
-}
-
-.main-navigations {
-  display: flex;
-  gap: 30px;
-  text-transform: uppercase;
-}
-
-.main-navigations a {
-  text-decoration: none;
-  color: #1971c2;
-}
-
 
 .whole-container{
 	display:flex;
