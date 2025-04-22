@@ -75,7 +75,7 @@ public class DashboardServlet extends HttpServlet {
                             "FROM Expenses e " +
                             "JOIN Categories c ON e.CategoryId = c.CategoryId " +
                             "WHERE c.Type = 'Expense' AND e.UserId = ? " +
-                            "AND e.ExpenseDate BETWEEN ? AND ? " +  // << Add this
+                            "AND e.ExpenseDate BETWEEN ? AND ? " +
                             "GROUP BY c.Name";
 
         try (Connection conn = DatabaseConnection.getConnection()) {

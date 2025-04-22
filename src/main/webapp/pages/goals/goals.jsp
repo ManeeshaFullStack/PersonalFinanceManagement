@@ -40,7 +40,7 @@
 	
 	    <div class="summary-table">
 	      <div>
-	        <table>
+	        <table style="width: fit-content;">
 	          <tr>
 	            <th>Description</th>
 	            <th>Amount</th>

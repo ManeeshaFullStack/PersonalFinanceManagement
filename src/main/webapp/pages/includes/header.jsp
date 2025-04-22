@@ -20,9 +20,9 @@
     <div class="menu-container">
       <button class="menu-button">Welcome, ${sessionScope.Username}</button>
       <div class="menu-dropdown">
-        <a href="../profile/profile.html">My Profile</a>
-        <a href="../change-password/changePassword.html">Change Password</a>
-        <a href="../notifications/notifications.html">Notifications</a>
+        <a href="pages/profile/profile.html">My Profile</a>
+        <a href="pages/change-password/changePassword.html">Change Password</a>
+        <a href="pages/notifications/notifications.html">Notifications</a>
         <a href="<%= request.getContextPath() %>/pages/signout/signout.jsp">Sign Out</a>
       </div>
     </div>

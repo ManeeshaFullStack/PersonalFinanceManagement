@@ -29,21 +29,11 @@
 	          <p>"Track your income, grow your wealth!"</p>
 	          <a href="<%= request.getContextPath() %>/IncomeServlet">Go to Income Tracking</a>
 	        </div>
+	        
 	        <div class="chart-box">
 	          <canvas id="expenseChart"></canvas>
 	          <p>"Control expenses, secure your future!"</p>
 	          <a href="<%= request.getContextPath() %>/ExpenseServlet">Go to Expense Tracking</a>
-	        </div>
-	        
-	        <div class="chart-box">
-	          <canvas id="budgetChart"></canvas>
-	          <p>"Plan your budget, achieve your dreams!"</p>
-	          <a href="../budget/budget.html">Go to Budget Management</a>
-	        </div>
-	        <div class="chart-box">
-	          <canvas id="goalsChart"></canvas>
-	          <p>"Set goals, accomplish milestones!"</p>
-	          <a href="../goals/goals.html">Go to Goal Setting</a>
 	        </div>
 	      </div>
 	      <div class="content-box">
@@ -270,14 +260,6 @@
           menuDropdown.classList.remove("show");
         });
 
-        // Example chart data
-        const exampleData = {
-          income: [40, 30, 30],
-          expenses: [50, 20, 30],
-          budget: [60, 25, 15],
-          goals: [70, 15, 15],
-        };
-
         function createChart(canvasId, data, labels, backgroundColors) {
           new Chart(document.getElementById(canvasId), {
             type: "pie",
@@ -311,18 +293,6 @@
           expenseData,
           expenseLabels,
           expenseLabelsBackgroundColors
-        );
-        createChart(
-          "budgetChart",
-          exampleData.budget,
-          ["Essentials", "Savings", "Leisure"],
-          ["#9C27B0", "#009688", "#FFC107"]
-        );
-        createChart(
-          "goalsChart",
-          exampleData.goals,
-          ["Short-term", "Mid-term", "Long-term"],
-          ["#673AB7", "#3F51B5", "#8BC34A"]
         );
       });
     </script>
