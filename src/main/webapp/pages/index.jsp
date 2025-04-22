@@ -297,13 +297,13 @@
         <div class="footer-links">
           <div class="footer-section">
             <h3>About Us</h3>
-            <a href="../pages/howItWorks/howItWorks.html" target="_self"
+            <a href="../pages/howItWorks/howItWorks.jsp" target="_self"
               >How it works</a
             >
-            <a href="../pages/features/features.html" target="_self"
+            <a href="../pages/features/features.jsp" target="_self"
               >Features</a
             >
-            <a href="../pages/whyChooseUs/whyChooseUs.html" target="_self"
+            <a href="../pages/whyChooseUs/whyChooseUs.jsp" target="_self"
               >Why Choose Us?</a
             >
           </div>
